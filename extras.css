@@ -1,0 +1,86 @@
+/* ===== FLOATING PILL NAV ===== */
+header{display:block;padding:12px clamp(18px,4vw,48px);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+header.hd:not(:focus-within){transform:translateY(-150%)}
+.bar{display:flex;align-items:center;gap:10px;max-width:1224px;margin:0 auto;padding:8px 0;border-radius:99px;box-shadow:inset 0 0 0 2px transparent;transition:max-width .9s cubic-bezier(.16,1,.3,1),background .5s,box-shadow .6s,padding .7s cubic-bezier(.16,1,.3,1)}
+
+.nv{position:relative;gap:2px;margin-right:6px}.nv a{z-index:1;padding:8px 16px}.nv a:after{display:none}
+.nvi{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:color-mix(in srgb,var(--tx) 11%,transparent);opacity:0;pointer-events:none;transition:transform .6s cubic-bezier(.65,0,.35,1),width .6s cubic-bezier(.65,0,.35,1),opacity .4s}
+.hd-cta{padding:9px 9px 9px 20px;font-size:.95rem}
+.hd-cta:before{clip-path:circle(0 at calc(100% - 22px) 50%)}.hd-cta:hover:before{clip-path:circle(160% at calc(100% - 22px) 50%)}
+@media(max-width:1100px){.hd-cta{display:none}}
+/* ===== PAGE-INTRO AMBIENT ANIMATIONS (one per page, subtle) ===== */
+.ph{position:relative;overflow:hidden}.ph>.w{position:relative;z-index:1}
+.deco{position:absolute;right:5%;top:110px;width:min(32vw,360px);aspect-ratio:1;z-index:0;pointer-events:none;opacity:0;animation:dfade 1.6s ease 1.6s forwards}
+@keyframes dfade{to{opacity:var(--o,.75)}}
+@media(max-width:900px){.deco{--o:.3;width:48vw;right:-8%}}
+@media(prefers-reduced-motion:reduce){.deco{opacity:.75}}
+.deco i{position:absolute;display:block}
+/* About: three morphing blobs */
+.d-about i{border-radius:42% 58% 55% 45%;animation:mo 12s ease-in-out infinite alternate}
+.d-about i:nth-child(1){width:78%;aspect-ratio:1;right:0;top:8%;background:radial-gradient(circle at 30% 26%,color-mix(in srgb,var(--a) 62%,#fff),var(--a) 64%)}
+.d-about i:nth-child(2){width:46%;aspect-ratio:1;left:0;top:0;background:radial-gradient(circle at 30% 26%,color-mix(in srgb,var(--b) 62%,#fff),var(--b) 64%);animation-delay:-4s}
+.d-about i:nth-child(3){width:30%;aspect-ratio:1;right:8%;bottom:0;background:radial-gradient(circle at 30% 26%,color-mix(in srgb,var(--c) 62%,#fff),var(--c) 64%);animation-delay:-8s}
+/* Services: orbiting rings */
+@keyframes spin{to{transform:rotate(360deg)}}
+.d-services i{inset:0;border-radius:50%;border:2px dashed color-mix(in srgb,var(--tx) 30%,transparent);animation:spin 26s linear infinite}
+.d-services i:nth-child(2){inset:17%;animation-duration:18s;animation-direction:reverse}.d-services i:nth-child(3){inset:34%;animation-duration:12s}
+.d-services i:after{content:'';position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--a)}
+.d-services i:nth-child(2):after{background:var(--b)}.d-services i:nth-child(3):after{background:var(--c)}
+.d-services i:nth-child(4){inset:45%;border:0;background:var(--d);animation:pu 3s ease-in-out infinite}.d-services i:nth-child(4):after{display:none}
+/* Work: floating project cards */
+.d-work i{width:62%;aspect-ratio:4/3;border-radius:20px;box-shadow:0 20px 40px rgba(20,17,43,.2);animation:fl 7s ease-in-out infinite}
+.d-work i:before{content:'';position:absolute;left:10%;top:14%;width:40%;height:8%;border-radius:99px;background:rgba(255,255,255,.75)}
+.d-work i:nth-child(1){left:0;top:4%;background:var(--a);rotate:-8deg}.d-work i:nth-child(2){right:0;top:30%;background:var(--b);rotate:6deg;animation-delay:-2.3s}.d-work i:nth-child(3){left:14%;bottom:0;background:var(--c);rotate:-2deg;animation-delay:-4.6s}
+/* Insights: lines being written */
+.d-blog i{height:16px;border-radius:99px;left:0;transform-origin:left;animation:wr 6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes wr{0%{transform:scaleX(0)}30%,72%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+.d-blog i:nth-child(1){top:10%;width:90%;background:var(--a)}.d-blog i:nth-child(2){top:26%;width:70%;background:var(--b);animation-delay:.25s}.d-blog i:nth-child(3){top:42%;width:82%;background:var(--c);animation-delay:.5s}.d-blog i:nth-child(4){top:58%;width:50%;background:var(--d);animation-delay:.75s}.d-blog i:nth-child(5){top:74%;width:66%;background:var(--a);animation-delay:1s}
+/* Contact: signal ripples */
+.d-contact i{inset:0;border-radius:50%;border:3px solid var(--b);opacity:0;animation:rp 4.5s ease-out infinite}
+.d-contact i:nth-child(2){animation-delay:1.5s}.d-contact i:nth-child(3){animation-delay:3s}
+@keyframes rp{0%{transform:scale(.15);opacity:.9}100%{transform:scale(1);opacity:0}}
+.d-contact i:nth-child(4){inset:44%;border:0;background:var(--b);opacity:1;animation:pu 3s ease-in-out infinite}
+.nv{flex-shrink:0}.nv a,.logo{white-space:nowrap}.bar>*{flex-shrink:0}.bar .logo{margin-right:auto}
+.ph form input,.ph form select,.ph form textarea{background:var(--bg)}.d-contact{--o:.55}
+
+/* ===== v3: slow, smooth hovers everywhere ===== */
+:root{--ez:cubic-bezier(.16,1,.3,1)}
+.t{transition:transform 1.1s var(--ez),border-radius 1.3s var(--ez)}.t:hover{transform:translateY(-10px) rotate(-1deg);border-radius:64px 28px 64px 28px}
+.bn li{transition:transform 1.1s var(--ez),border-radius 1.3s var(--ez),background 1s var(--ez)}.bn li:hover{transform:translateY(-8px) rotate(.6deg);border-radius:52px 24px 52px 24px}
+.pill{transition:transform .9s var(--ez),background .9s var(--ez),color .9s var(--ez)}
+.pills a{transition:background .9s var(--ez),color .9s var(--ez)}
+.bp{transition:padding .9s var(--ez),color .9s var(--ez)}
+.big{transition:background 1s var(--ez),border-radius 1.3s var(--ez)}.blk{transition:border-radius 1.3s var(--ez)}
+.th,.rw .th{transition:border-radius 1.3s var(--ez),transform 1.3s var(--ez)}.tm .pt{transition:border-radius 1.3s var(--ez)}
+.sr{transition:background .9s var(--ez),color .9s var(--ez),padding .9s var(--ez)}
+footer a{transition:opacity .8s var(--ez)}.pal button{transition:transform .7s var(--ez)}.pal button:hover{transform:scale(1.22)}
+/* ===== v3: nav grows a little when you scroll, and stays on screen ===== */
+
+
+
+
+
+
+@media(max-width:1200px){.hd-cta{display:none}}
+
+/* ===== page-transition label: same font on old + new page so it never flickers ===== */
+#wp:after{content:var(--wpl,"");position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 5vw;font:800 clamp(3rem,13vw,11rem)/1 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;letter-spacing:-.05em;color:var(--wpf,#14112b);opacity:var(--lo,0);transition:opacity .45s ease var(--ld,.2s)}
+html.tp-in{background:var(--wpc)}html.tp-in #wp{color:var(--wpf)}html.tp-in #wp:after{opacity:1;transition:none}
+
+/* ===== hero title: letter roll on hover (slow + smooth, same language as nav/buttons) ===== */
+.lt{display:inline-block;position:relative}
+.lt .o,.lt .n{display:block;transition:transform 1.1s var(--ez),opacity .9s var(--ez)}
+.lt .n{position:absolute;left:0;top:0;width:100%;color:var(--lc);opacity:0;transform:translateY(105%) skewX(-14deg)}
+.lt:hover .o{transform:translateY(-105%) skewX(14deg);opacity:0}.lt:hover .n{transform:none;opacity:1}
+@media(hover:none),(prefers-reduced-motion:reduce){.lt .n{display:none}}
+
+/* ===== v4 nav: the pill draws itself open AROUND the content (logo + links never move) ===== */
+.bar{position:relative;isolation:isolate;padding:10px 0;border-radius:99px;box-shadow:0 18px 30px -6px rgba(20,17,43,0);transition:box-shadow 1.1s var(--ez)}
+.bar>*{position:relative;z-index:1}
+.bar:before{content:'';position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;border-radius:99px;background:color-mix(in srgb,var(--bg) 74%,transparent);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);box-shadow:inset 0 0 0 2px var(--tx);clip-path:inset(0 50% 0 50% round 99px);opacity:0;transition:clip-path 1.1s var(--ez),top 1.1s var(--ez),right 1.1s var(--ez),bottom 1.1s var(--ez),left 1.1s var(--ez),opacity .5s ease}
+header.stuck .bar{box-shadow:0 18px 30px -6px rgba(20,17,43,.3)}
+header.stuck .bar:before{top:-6px;right:-18px;bottom:-6px;left:-18px;clip-path:inset(0 0 0 0 round 99px);opacity:1}
+.bar:after{content:'';position:absolute;z-index:2;left:30px;right:30px;bottom:-6px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--a),var(--b));transform:scaleX(var(--p,0));transform-origin:left;opacity:0;transition:opacity .7s ease .5s}
+header.stuck .bar:after{opacity:1}
+header{transition:transform 1s var(--ez)}header.stuck{transform:translateY(5px)}
+@media(max-width:900px){header.stuck .bar:before{left:-10px;right:-10px}.bar:after{left:22px;right:22px}}
